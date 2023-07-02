@@ -20,8 +20,6 @@ Conterrà la risposta dell'API
 
 import 'package:equatable/equatable.dart';
 import 'package:matches/services/network/dto/match_dto.dart';
-import 'package:matches/services/network/dto/paging_dto.dart';
-import 'package:matches/services/network/dto/parameters_dto.dart';
 
 class MatchesResponse extends Equatable {
   final String get;
@@ -73,4 +71,30 @@ Il custruttore factory esegue il parse da Json e costruisce un'istanza di Matche
   override di props
   In modo da discriminare quando una istanza di tipo MatchesResponse differisce da un'altra
   */
+}
+
+class PagingDTO extends Equatable {
+  final int current;
+  final int total;
+
+  const PagingDTO(this.current, this.total);
+
+  factory PagingDTO.fromJson(Map<String, dynamic> data) => PagingDTO(
+        data['current'],
+        data['total'],
+      );
+
+  @override
+  List<Object?> get props => [current, total];
+}
+
+class ParametersDTO extends Equatable {
+  final String date;
+
+  const ParametersDTO(this.date);
+
+  factory ParametersDTO.fromJson(Map<String, dynamic> data) => ParametersDTO(data['date']);
+
+  @override
+  List<Object?> get props => [date];
 }
