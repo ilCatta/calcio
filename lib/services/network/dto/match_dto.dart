@@ -253,3 +253,5 @@ class ScoresDTO extends Equatable {
         penalty,
       ];
 }
+
+
